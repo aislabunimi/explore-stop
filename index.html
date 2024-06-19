@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="R2SNet">
+    <meta name="keywords" content="R2SNet, Object Detection, Proposals Refinement, Neural Network">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>R2SNet: Scalable Domain Adaptation for Object Detection in
+        Cloud-Based Robots Ecosystems via Proposal Refinement </title>
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro|Crimson+Text"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/HoloDeckLogo.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script>
+        function ciao(){const videoOne = document.getElementById("videoOne");
+            const videoTwo = document.getElementById("videoTwo");
+
+            videoOne.play();
+            videoTwo.play();
+        }
+
+
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J4K952PNF1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J4K952PNF1');
+</script>
+
+</head>
+
+<body onload="ciao()">
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">
+                        <!--<span class="house-svg"></span>-->
+                        <span class="small-caps">R2SNet</span>: Scalable Domain Adaptation for Object Detection in
+                        Cloud-Based Robots Ecosystems via Proposal Refinement
+                    </h1>
+                    <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://antonazzi.di.unimi.it">Michele Antonazzi</a>,
+            </span>
+                        <span class="author-block">
+              <a href="http://luperto.di.unimi.it">Matteo Luperto</a>,
+            </span>
+                        <span class="author-block">
+              <a href="https://borghese.di.unimi.it">N. Alberto Borghese</a>,
+            </span>
+                        <span class="author-block">
+              <a href="https://basilico.di.unimi.it">Nicola Basilico</a>
+            </span>
+
+                    </div>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">All authors are with the Department of Computer Science, University of
+                        Milan, Milano, Italy</span>&nbsp;&nbsp;
+
+                    </div>
+
+                    <div class="is-size-5 emails">
+            <span class="emails">
+              <a>name.surname@unimi.it</a>&nbsp;&nbsp;
+            </span>
+
+                    </div>
+
+                    <!-- </div> -->
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+
+                            <!-- arxiv Link. -->
+                            <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.11567"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/aislabunimi/door-detection-long-term/tree/bbox_filtering"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                            <!-- Email Link. -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section", id="intro">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <div class="columns">
+                    <div class="column is-half">
+                        <p style="font-size: 1.2em"><b>TaskNet</b></p>
+                        <video  muted loop style="width: 100%" id="videoOne">
+                            <source src="./static/video/single_exp_tasknet.mp4" type="video/mp4">
+                        </video>
+
+                    </div>
+                    <div class="column is-half">
+
+                        <p style="font-size: 1.2em"><b>TaskNet + R2SNet</b></p>
+                        <video  muted loop style="width: 100%" id="videoTwo">
+                            <source src="./static/video/single_exp_r2snet.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section", id="abstract">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We introduce a novel approach for scalable domain adaptation in cloud robotics scenarios where robots rely on third-party AI inference services powered by large pre-trained deep neural networks. Our method is based on a downstream proposal-refinement stage running locally on the robots, explotiting a new lightweight DNN architecture, R2SNet. This architecture aims to mitigate performance degradation from domain shifts by adapting the object detection process to the target environment, focusing on relabeling, rescoring, and suppression of bounding-box proposals. Our method allows for local execution on robots, addressing the scalability challenges of domain adaptation without incurring significant computational costs. Real-world results on mobile service robots performing door detection show the effectiveness of the proposed method in achieving scalable domain adaptation.                     </p>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section", id="scenario">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <h2 class="title is-3">Scenario</h2>
+                <div class="content has-text-justified">
+                    <p>
+
+                        We consider a robotic ecosystem where multiple independent units are deployed across
+                        different environments and rely on a cloud-based DNN model (called TaskNet) to perform object detection.
+                        We perform efficient domain adaptation by refining the TaskNet's proposals
+                        locally on the robots. To do this, we introduce R2SNet, a novel lightweight DNN
+                        architecture focuses on three
+                        different types of corrective actions: relabeling, rescoring,
+                        and suppression of bounding boxes.
+                    </p>
+                </div>
+                <div class="content is-centered">
+                    <img src="static/images/cloud_architecture.png" style="width: 80%">
+                </div>
+
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section", id="Method">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <h2 class="title is-3">Method</h2>
+                <div class="content has-text-justified">
+                    <video autoplay muted playsinline loop height="100%">
+                        <source src="./static/video/method.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section" id="architecture">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <h2 class="title is-3">Architecture</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        R2SNet is composed of two parallel networks that process the
+                        proposals descriptors (location, dimension, label, and confidence) and the
+                        features related to their correspondent image portion. Each of them extracts local features 
+                        using <b>shared MLPs</b> and a global representation of the proposal set using a permutation invariant <b>max</b> operation. 
+                        These embeddings are
+                        aggregated and processed by 3 heads to address the relabeling, rescoring, and suppression of the input proposal.
+                    </p>
+                </div>
+                <div class="content">
+                    <img src="static/images/main_architecture.png">
+                    <small><p>R2SNet architecture.</p></small>
+                </div>
+
+                <div class="content has-text-justified">
+                    <p>
+                        The Background Feature extractor Network (BFNet) extracts the features of each proposal related to their corresponding region of the image.
+                        At first, BFNet extracts an image embedding using a multi–scale <b>CNN backbone</b>
+                        with residual connections where the 3 embeddings are processed with convolutional
+                        layers and step-by-step top-down aggregated through upsampling and summation.
+                        To speed up the inference time, the image embedding is mapped to each proposal with
+                        a <b>binary mask</b> generated by 4 MLPs with fixed weights which
+                        suppresses the features exceeding the bounding box's boundaries.
+                    </p>
+                </div>
+                <div class="content">
+                    <img src="static/images/background_network.png">
+                    <small><p>BFNet architecture.</p></small>
+                </div>
+
+
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+<section class="section" id="experiments">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <h2 class="title is-3">Experiments</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        To carry out our experiments, we teleoperate a Giraff-X robot for
+                        mapping 4 real environments (3 university facilities and an apartment) while acquiring images at 1 Hz
+                        with a low resolution Orbecc Astra Camera.
+                        We train different versions of R2SNet using increasing amounts of data and varying the
+                        number of input proposals. We prove that
+                        R2SNet strongly improves the performance obtained by using the TaskNet alone even
+                        with a few training data (only the 25% of the acquired images)
+                        and with a reasonable number of bounding box to refine (between 30 to 100).
+
+                    </p>
+                </div>
+                <div class="content has-text-justified">
+                    <video autoplay muted playsinline loop width="100%">
+                        <source src="./static/video/r2snet_experiments.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+            </div>
+        </div>
+        <!--/ Abstract. -->
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title is-3">BibTeX</h2>
+        <pre style="font-size: 16px;"><code>@misc{antonazzi2024r2snet,
+      title={R2SNet: Scalable Domain Adaptation for Object Detection in Cloud-Based Robots Ecosystems via Proposal Refinement},
+      author={Michele Antonazzi and Matteo Luperto and N. Alberto Borghese and Nicola Basilico},
+      year={2024}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+
+            <a class="icon-link" href="https://arxiv.org/abs/2403.11567" class="external-link" disabled>
+                <i class="ai ai-arxiv"></i>
+            </a>
+            <a class="icon-link" href="https://github.com/aislabunimi/door-detection-long-term/tree/bbox_filtering" class="external-link" disabled>
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content", style="text-align: center;">
+                    <p>
+                        This website was developed by referencing <a href="https://yueyang1996.github.io/holodeck/">this</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
