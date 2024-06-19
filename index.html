@@ -7,8 +7,7 @@
           content="R2SNet">
     <meta name="keywords" content="R2SNet, Object Detection, Proposals Refinement, Neural Network">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>R2SNet: Scalable Domain Adaptation for Object Detection in
-        Cloud-Based Robots Ecosystems via Proposal Refinement </title>
+    <title>Estimating Map Completeness in Robot Exploration </title>
 
 
 
@@ -29,16 +28,7 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
-    <script>
-        function ciao(){const videoOne = document.getElementById("videoOne");
-            const videoTwo = document.getElementById("videoTwo");
 
-            videoOne.play();
-            videoTwo.play();
-        }
-
-
-    </script>
 
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J4K952PNF1"></script>
@@ -52,7 +42,6 @@
 
 </head>
 
-<body onload="ciao()">
 
 <section class="hero">
     <div class="hero-body">
@@ -61,33 +50,35 @@
                 <div class="column has-text-centered">
                     <h1 class="title is-1 publication-title">
                         <!--<span class="house-svg"></span>-->
-                        <span class="small-caps">R2SNet</span>: Scalable Domain Adaptation for Object Detection in
-                        Cloud-Based Robots Ecosystems via Proposal Refinement
+                        Estimating Map Completeness in Robot Exploration
                     </h1>
                     <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://antonazzi.di.unimi.it">Michele Antonazzi</a>,
+                <a href="http://luperto.di.unimi.it">Matteo Luperto</a>,
+            </span>
+            <span class="author-block">
+              Marco Maria Ferrara,
             </span>
                         <span class="author-block">
-              <a href="http://luperto.di.unimi.it">Matteo Luperto</a>,
+              <a href="https://boracchi.faculty.polimi.it">Giacomo Boracchi</a>,
             </span>
                         <span class="author-block">
-              <a href="https://borghese.di.unimi.it">N. Alberto Borghese</a>,
-            </span>
-                        <span class="author-block">
-              <a href="https://basilico.di.unimi.it">Nicola Basilico</a>
+              <a href="https://amigoni.faculty.polimi.it/">Francesco Amigoni</a>
             </span>
 
                     </div>
                     <div class="is-size-5 publication-authors">
-                        <span class="author-block">All authors are with the Department of Computer Science, University of
-                        Milan, Milano, Italy</span>&nbsp;&nbsp;
+                        <span class="author-block">ML is with the Department of Computer Science, University of
+                        Milan, Milano, Italy.
+                        <br />
+                        MF, GB, and FA are with the Dipartimento di Elettronica, Informazione e Bioingegneria, Politecnico di Milano, Milano, Italy.</span>
+                    </span>&nbsp;&nbsp;
 
                     </div>
 
                     <div class="is-size-5 emails">
             <span class="emails">
-              <a>name.surname@unimi.it</a>&nbsp;&nbsp;
+              Corresponding author:<a>matteo.luperto@unimi.it</a>&nbsp;&nbsp;
             </span>
 
                     </div>
@@ -98,18 +89,18 @@
                             <!-- PDF Link. -->
 
                             <!-- arxiv Link. -->
-                            <span class="link-block">
-                <a href="https://arxiv.org/abs/2403.11567"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                <span class="link-block">
+                    <a href="https://arxiv.org/abs/2403.11567"
+                        class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+                    </span>
+                    <span>arXiv</span>
+                    </a>
+                </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/aislabunimi/door-detection-long-term/tree/bbox_filtering"
+                <a href="https://github.com/aislabunimi/exploration-aware"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -131,24 +122,23 @@
     <div class="container is-max-desktop">
         <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
-            <div class="column is-five-fifths">
-                <div class="columns">
-                    <div class="column is-half">
-                        <p style="font-size: 1.2em"><b>TaskNet</b></p>
-                        <video  muted loop style="width: 100%" id="videoOne">
-                            <source src="./static/video/single_exp_tasknet.mp4" type="video/mp4">
-                        </video>
-
-                    </div>
-                    <div class="column is-half">
-
-                        <p style="font-size: 1.2em"><b>TaskNet + R2SNet</b></p>
-                        <video  muted loop style="width: 100%" id="videoTwo">
-                            <source src="./static/video/single_exp_r2snet.mp4" type="video/mp4">
-                        </video>
-                    </div>
+            <div class="columns">
+                <div class="column is-half">
+                    <img src="static/images/office1.png">
+                    <p style="font-size: 0.8em">t = 90 min.</p>
+                </div>
+                <div class="column is-half">
+                    <img src="static/images/office2.png" >
+                    <p style="font-size: 0.8em">T = 150 min</p>
                 </div>
             </div>
+        </div>
+
+        <div class="content has-text-justified">
+            <p>
+                The map after t = 90 min of exploration (left) already represents almost all of the environment (the 98% of the mapped area explored), except a few uninteresting corners and portions of rooms scattered across the whole environment, highlighted in blue. This exploration run ends at T = 150 min (right image) when all frontiers have been visited. During the time interval, the robot moves back and forth to explore the remaining frontiers, possibly jeopardizing the whole mapping process. 
+                Our method infers that the map at the right is almost fully explored and stops the exploration, reducing the total exploration time.
+            </p>
         </div>
         <!--/ Abstract. -->
     </div>
@@ -162,11 +152,9 @@
                 <h2 class="title is-3">Abstract</h2>
                 <div class="content has-text-justified">
                     <p>
-                        We introduce a novel approach for scalable domain adaptation in cloud robotics scenarios where robots rely on third-party AI inference services powered by large pre-trained deep neural networks. Our method is based on a downstream proposal-refinement stage running locally on the robots, explotiting a new lightweight DNN architecture, R2SNet. This architecture aims to mitigate performance degradation from domain shifts by adapting the object detection process to the target environment, focusing on relabeling, rescoring, and suppression of bounding-box proposals. Our method allows for local execution on robots, addressing the scalability challenges of domain adaptation without incurring significant computational costs. Real-world results on mobile service robots performing door detection show the effectiveness of the proposed method in achieving scalable domain adaptation.                     </p>
-                </div>
+                        We propose a method that, given a partial grid map of an indoor environment built by an autonomous mobile robot, estimates the amount of the explored area represented in the map, as well as whether the uncovered part is still worth being explored or not. Our method is based on a deep convolutional neural network trained on data from partially explored environments with annotations derived from the knowledge of the entire map (which is not available when the network is used for inference). We show how such a network can be used to define a stopping criterion to terminate the exploration process when it is no longer adding relevant details about the environment to the map, saving, on average, 40% of the total exploration time with respect to covering all the area of the environment.                </div>
             </div>
         </div>
-        <!--/ Abstract. -->
     </div>
 </section>
 
@@ -179,17 +167,12 @@
                 <div class="content has-text-justified">
                     <p>
 
-                        We consider a robotic ecosystem where multiple independent units are deployed across
-                        different environments and rely on a cloud-based DNN model (called TaskNet) to perform object detection.
-                        We perform efficient domain adaptation by refining the TaskNet's proposals
-                        locally on the robots. To do this, we introduce R2SNet, a novel lightweight DNN
-                        architecture focuses on three
-                        different types of corrective actions: relabeling, rescoring,
-                        and suppression of bounding boxes.
+                        We consider an autonomous mobile robot that is exploring an unseen environment in order to obtain a full map of it. 
+                        The robot is equipped with a 2D laser scanner, and it is able to build a partial grid map of the environment as it moves around.
+                        While several exploration strategy have been proposed to guide the robot in the environment, the robot should also know when to stop the exploration process.
+                        A method that decides when an exploration process should stop is called a stopping criterion.
+                        The importance of having a good stopping criterion is paramount. Indeed, the later stages of a typical exploration process often provide little contribution, and they can cause a degradation of the mapping performance, leading to map inconsistencies and unrecoverable states that invalidate the entire mapping process. 
                     </p>
-                </div>
-                <div class="content is-centered">
-                    <img src="static/images/cloud_architecture.png" style="width: 80%">
                 </div>
 
             </div>
@@ -205,9 +188,16 @@
             <div class="column is-five-fifths">
                 <h2 class="title is-3">Method</h2>
                 <div class="content has-text-justified">
-                    <video autoplay muted playsinline loop height="100%">
-                        <source src="./static/video/method.mp4" type="video/mp4">
-                    </video>
+                <p>
+                    We evaluate the partial map of an environment and estimates the advancement of the exploration process. Our method processes partial 2D grid maps obtained during exploration as images, using a Convolutional Neural Network (CNN). We exploit the fact that assessing the degree of completeness of a map is a task well suited for CNNs, as maps of indoor environments exhibit very peculiar patterns that allow humans to correctly assess – in most cases – whether there is still some potentially
+                    large area to explore or not.
+                    More precisely, we:
+                    <ul>
+                    <li> define a stopping criterion that determines whether a partial map under scrutiny can be considered as enough explored or not,</li>
+                    <li> estimate the status of the exploration process as the percentage of the total area explored by the robot (with- out needing the knowledge of the whole environment), and</li>
+                    <li>identify the areas of the map that are of interest (if any) to progress the exploration.</li>
+                    </ul>
+                </p>
                 </div>
             </div>
         </div>
@@ -220,39 +210,18 @@
         <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
             <div class="column is-five-fifths">
-                <h2 class="title is-3">Architecture</h2>
+                <h2 class="title is-3">Models</h2>
                 <div class="content has-text-justified">
                     <p>
-                        R2SNet is composed of two parallel networks that process the
-                        proposals descriptors (location, dimension, label, and confidence) and the
-                        features related to their correspondent image portion. Each of them extracts local features 
-                        using <b>shared MLPs</b> and a global representation of the proposal set using a permutation invariant <b>max</b> operation. 
-                        These embeddings are
-                        aggregated and processed by 3 heads to address the relabeling, rescoring, and suppression of the input proposal.
+                        Our main intuition consists in casting the assessment of the status of the exploration in a visual recognition problem.
+                        We train a deep convolutional neural network for each of the tasks of stopping the exploration run and estimate the percentage of the explored area. 
+                        The stopping criterion is modeled as a visual recognition problem where the classification task is to distinguish between maps that are not-explored yet from those that are sufficiently explored. 
+                        The first class contains maps that a human (who knows the full map of the environment) would consider still to be explored, typically because of missing areas that are of interest like one or more rooms that have not been mapped. 
+                        The second class contains maps that a human would consider complete enough to represent the full environment. In this second case, some small parts of the environments (like corners) may not be entirely mapped yet, but such parts are not so relevant. 
+                        The second task, which is estimating the portion of the area already explored, is modeled as a regression problem using the CNN backbone adopted for solving the first task.
+                        For both tasks we rely on a EfficientNet B1 architecture, pre-trained on ImageNet, and fine-tuned on our dataset.
                     </p>
                 </div>
-                <div class="content">
-                    <img src="static/images/main_architecture.png">
-                    <small><p>R2SNet architecture.</p></small>
-                </div>
-
-                <div class="content has-text-justified">
-                    <p>
-                        The Background Feature extractor Network (BFNet) extracts the features of each proposal related to their corresponding region of the image.
-                        At first, BFNet extracts an image embedding using a multi–scale <b>CNN backbone</b>
-                        with residual connections where the 3 embeddings are processed with convolutional
-                        layers and step-by-step top-down aggregated through upsampling and summation.
-                        To speed up the inference time, the image embedding is mapped to each proposal with
-                        a <b>binary mask</b> generated by 4 MLPs with fixed weights which
-                        suppresses the features exceeding the bounding box's boundaries.
-                    </p>
-                </div>
-                <div class="content">
-                    <img src="static/images/background_network.png">
-                    <small><p>BFNet architecture.</p></small>
-                </div>
-
-
             </div>
         </div>
         <!--/ Abstract. -->
@@ -264,27 +233,50 @@
         <!-- Abstract. -->
         <div class="columns is-centered has-text-centered">
             <div class="column is-five-fifths">
-                <h2 class="title is-3">Experiments</h2>
+                <h2 class="title is-3">Experimental results</h2>
+
+
                 <div class="content has-text-justified">
                     <p>
-                        To carry out our experiments, we teleoperate a Giraff-X robot for
-                        mapping 4 real environments (3 university facilities and an apartment) while acquiring images at 1 Hz
-                        with a low resolution Orbecc Astra Camera.
-                        We train different versions of R2SNet using increasing amounts of data and varying the
-                        number of input proposals. We prove that
-                        R2SNet strongly improves the performance obtained by using the TaskNet alone even
-                        with a few training data (only the 25% of the acquired images)
-                        and with a reasonable number of bounding box to refine (between 30 to 100).
-
+                        Our method is tested both online and offline by considering an extensive set of thousands of maps as acquired during exploration runs by an autonomoous robot.
+                        We show that our method is able to correctly estimate the percentage of the explored area and to stop the exploration process when the map is almost fully explored.
+                        Our method is able to save, on average, 40% of the total exploration time with respect to covering all the area of the environment.
+                        The DNN models is able to distinguish between fully-explored and partially-explored maps with an accuracy above 90%. 
+                        Interestingly, we can keep the rate of false positives (i.e., maps that are considered fully explored but are not) below 2%.
                     </p>
                 </div>
-                <div class="content has-text-justified">
-                    <video autoplay muted playsinline loop width="100%">
-                        <source src="./static/video/r2snet_experiments.mp4" type="video/mp4">
-                    </video>
+                <div class="content is-centered">
+                    <img src="static/images/incremental.png" style="width: 80%">
                 </div>
 
-            </div>
+                <div class="content has-text-justified">
+                    <p>
+                        The example image shows our method applied to partial maps obtained after 10, 20, 30, and 40 minutes of exploration of two environments. In the environment in the first row (a)-(d), the exploration ends after T = 70 min; with our method, we can reduce such time by 30 minutes (d). In the environment in the second row (e)-(h), the exploration is concluded after T = 90 min; we reduce such time by 50 minutes (h). The areas highlighted in the partial maps are the locations that the neural network of our method identifies as relevant to make its prediction (red and blue denotes the most and the least relevant regions, respectively).
+                    </p>
+                </div>
+                <div class="content is-centered">
+                    <img src="static/images/area.png" style="width: 40%">
+                </div>
+
+                <div class="content has-text-justified">
+                    <p>
+                        Overall, can estimate the percentage of the explored area with an error of just 4.68%, which is low and stable across all 15 test environments. 
+                        The figure above shows how the average error of estimating the percentage of the area progresses during exploration runs. While at the beginning of the exploration, the error is higher (as the portion of the map known to the robot is too little to make an accurate estimation), the error becomes stable and under 10% when half or more of the environment is explored. 
+                        Overall, our method can provide a reliable estimate of the amount of the explored area represented in a map.
+                    </p>
+                </div>
+                <div class="content is-centered">
+                    <img src="static/images/real.png" style="width: 80%">
+                </div>
+
+                <div class="content has-text-justified">
+                    <p>
+                        Finally, we tested our method on real data collected by an autonomous robot.
+                        Despite this domain shift, our model shows robust performance by correctly classifying all the maps as not-explored. 
+                        This result is particularly relevant as it shows the genralization of our results to real-world settings.
+                     </p>
+                </div>
+            
         </div>
         <!--/ Abstract. -->
     </div>
@@ -301,9 +293,9 @@
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
         <h2 class="title is-3">BibTeX</h2>
-        <pre style="font-size: 16px;"><code>@misc{antonazzi2024r2snet,
-      title={R2SNet: Scalable Domain Adaptation for Object Detection in Cloud-Based Robots Ecosystems via Proposal Refinement},
-      author={Michele Antonazzi and Matteo Luperto and N. Alberto Borghese and Nicola Basilico},
+        <pre style="font-size: 16px;"><code>@misc{exploreawareness,
+      title={Estimating Map Completeness in Robot Exploration},
+      author={Matteo Luperto and Marco Maria Ferrara and Giacomo Boracchi and Francesco Amigoni},
       year={2024}
 }</code></pre>
     </div>
@@ -316,7 +308,7 @@
             <a class="icon-link" href="https://arxiv.org/abs/2403.11567" class="external-link" disabled>
                 <i class="ai ai-arxiv"></i>
             </a>
-            <a class="icon-link" href="https://github.com/aislabunimi/door-detection-long-term/tree/bbox_filtering" class="external-link" disabled>
+            <a class="icon-link" href="https://github.com/aislabunimi/exploration-aware" class="external-link" disabled>
                 <i class="fab fa-github"></i>
             </a>
 
